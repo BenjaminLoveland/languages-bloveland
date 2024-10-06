@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
         <title>Echo Message</title>
         <style>
           body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, comic-sans;
             background-color: #f4f4f9;
             color: #333;
             display: flex;
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
             height: 100vh;
           }
           h1 {
-            color: #5a67d8;
+            color: #ffde59;
           }
           form {
             display: flex;
@@ -77,7 +77,7 @@ app.post('/echo', (req, res) => {
         <title>Message Echo</title>
         <style>
           body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, comic-sans;
             background-color: #f4f4f9;
             color: #333;
             display: flex;
@@ -87,7 +87,7 @@ app.post('/echo', (req, res) => {
             flex-direction: column;
           }
           h1 {
-            color: #5a67d8;
+            color: #ffde59;
           }
           p {
             font-size: 20px;
