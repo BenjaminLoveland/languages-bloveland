@@ -1,52 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Echo App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My App</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Echo Messages</h1>
-        <form id="messageForm">
-            <input type="text" id="messageInput" placeholder="Type a message..." required />
-            <button type="submit">Submit</button>
-        </form>
-        <div id="messageList"></div>
-    </div>
-
-    <script>
-        const form = document.getElementById('messageForm');
-        const messageList = document.getElementById('messageList');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const messageInput = document.getElementById('messageInput').value;
-
-            // Post the message to the backend
-            const response = await fetch('/message', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: messageInput })
-            });
-
-            if (response.ok) {
-                // Reload messages after submission
-                loadMessages();
-                form.reset();
-            }
-        });
-
-        async function loadMessages() {
-            const response = await fetch('/messages');
-            const messages = await response.json();
-
-            messageList.innerHTML = messages.map(msg => `<p>${msg.message} (Posted at ${new Date(msg.created_at).toLocaleString()})</p>`).join('');
-        }
-
-        // Load messages when the page loads
-        window.onload = loadMessages;
-    </script>
+  <h1>Welcome to My App</h1>
+  <p>This is my JavaScript app.</p>
+  
+  <!-- Reference your app.js script here -->
+  <script src="app.js"></script>
 </body>
 </html>
