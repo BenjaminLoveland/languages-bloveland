@@ -1,12 +1,20 @@
-const express = require('express');
-const path = require('path');
+// This script will handle the client-side form submission
+document.getElementById('message-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting in the traditional way
 
-// Initialize Express app
-const app = express();
+  // Get the user's message
+  const message = document.getElementById('message').value;
 
-// Middleware to parse JSON and form data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  if (!message) {
+    alert('Message cannot be empty');
+    return;
+  }
+
+  // Display the message in the "message-box" div
+  const messageBox = document.getElementById('message-box');
+  messageBox.textContent = `Your message: ${message}`;
+  messageBox.style.display = 'block'; // Make the message box visible
+});
 
 // Serve a basic HTML form with inline CSS
 app.get('/', (req, res) => {
