@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Corners Game</title>
+</head>
+<body>
+    <h1>Four Corners Game</h1>
+
+    <!-- Form to add players -->
+    <form id="player-form">
+        <label for="name">Player Name:</label>
+        <input type="text" id="name" required>
+        <label for="corner">Choose a Corner (1-4):</label>
+        <input type="number" id="corner" min="1" max="4" required>
+        <button type="submit">Join Game</button>
+    </form>
+
+    <button id="eliminate-corner">Eliminate Corner</button>
+
+    <h2>Game Status</h2>
+    <div id="game-status"></div>
+
+    <script>
+        const gameId = 1;  // Example static game ID for now
+
+        document.getElementById('player-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const corner = document.getElementById('corner').value;
+
+            const response = await fetch('/api/game/add-player', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, corner, gameId })
+            });
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        document.getElementById('eliminate-corner').addEventListener('click', async function() {
+            const response = await fetch('/api/game/eliminate-corner', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ gameId })
+            });
+            const result = await response.json();
+            document.getElementById('game-status').innerText = result.message;
+        });
+    </script>
+</body>
+</html>
